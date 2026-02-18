@@ -1,0 +1,26 @@
+nav .navbar-brand
+{
+    color: #D2B48C;
+    font-size: xx-large;
+}
+
+nav .navbar-brand .brown
+{
+    color: #6F4F28;
+    font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+body {
+    background-image: url('/static/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.custom-btn:hover {
+    background-color: #A0522D;
+    transform: scale(1.05);
+}
+

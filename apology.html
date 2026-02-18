@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <style>
+        /* Character body */
+        .character {
+            position: relative;
+            width: 150px;
+            height: 300px;
+            background-color: #ffcc99;
+            margin: 100px auto;
+            border-radius: 20px;
+            animation: move 2s infinite alternate;
+        }
+
+        /* Head */
+        .head {
+            position: absolute;
+            top: -80px;
+            left: 30px;
+            width: 90px;
+            height: 90px;
+            background-color: #ffcc99;
+            border-radius: 50%;
+            border: 4px solid #333;
+        }
+
+        /* Eyes */
+        .eye {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border-radius: 50%;
+            border: 2px solid #333;
+            top: 30px;
+        }
+        .eye.left {
+            left: 20px;
+        }
+        .eye.right {
+            right: 20px;
+        }
+
+        /* Mouth */
+        .mouth {
+            position: absolute;
+            bottom: 15px;
+            left: 30px;
+            width: 30px;
+            height: 15px;
+            border-bottom: 4px solid #333;
+            border-radius: 0 0 20px 20px;
+        }
+
+        /* Arms */
+        .arm {
+            position: absolute;
+            top: 100px;
+            width: 40px;
+            height: 15px;
+            background-color: #ffcc99;
+            border-radius: 20px;
+        }
+        .arm.left {
+            left: -50px;
+        }
+        .arm.right {
+            right: -50px;
+        }
+
+        /* Legs */
+        .leg {
+            position: absolute;
+            bottom: 0;
+            width: 25px;
+            height: 80px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+        .leg.left {
+            left: 40px;
+        }
+        .leg.right {
+            right: 40px;
+        }
+
+        /* Animation for movement */
+        @keyframes move {
+            0% { transform: translateX(-20px); }
+            100% { transform: translateX(20px); }
+        }
+
+        /* Animation for waving arm */
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-20deg); }
+        }
+
+        /* Apply wave animation to right arm */
+        .arm.right {
+            animation: wave 0.5s ease-in-out infinite;
+            transform-origin: right center;
+        }
+    </style>
+
+    <div class="character">
+        <div class="head">
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="mouth"></div>
+        </div>
+        <div class="arm left"></div>
+        <div class="arm right"></div>
+        <div class="leg left"></div>
+        <div class="leg right"></div>
+    </div>
+
+    <!-- Meme image -->
+    <img alt="{{ top }}" class="border img-fluid"
+         src="https://api.memegen.link/images/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?background=https://i.imgur.com/CsCgN7Ll.png&width=400"
+         title="{{ top }}">
+{% endblock %}

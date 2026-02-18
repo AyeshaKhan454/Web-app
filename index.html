@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My To-Do List:
+{% endblock %}
+
+{% block main %}
+    <form action="/add" method="POST">
+        <input name="add_task" placeholder="Add a task" type="text" required>
+        <button type="submit" id="add">Add</button>
+    </form>
+    <table class="table table-h5">
+        <tr><th>Tasks</th> <th>Date-Time</th> <th>Remove</th></tr>
+        {% for task in to_do %}
+            <tr>
+                <td>{{ task["task"] }}</td>
+                <td>{{ task["date"] }}</td>
+                <td>
+                        <form action="/delete" method="POST">
+                            <input type="hidden" name="id" value="{{ task['id'] }}">
+                            <button type="submit" name="delete_button" value="delete">Delete</button>
+                        </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
